@@ -1,12 +1,12 @@
 Board.NewAnswerController = Ember.Controller.extend({
   needs: ['question'],
   actions: {
-    save: function() {
+    addAnswer: function() {
       var answer = this.store.createRecord('answer', {
-        author: this.get('author'),
+        poster: this.get('poster'),
         text: this.get('text')
       });
-      
+
       answer.save();
 
       var question = this.get('controllers.question.model');
@@ -14,8 +14,9 @@ Board.NewAnswerController = Ember.Controller.extend({
       question.save();
 
       this.transitionToRoute('question', question.id);
+      this.set('poster', " ");
+      this.set('text', " ");
+
     }
   }
-
-
-})
+});

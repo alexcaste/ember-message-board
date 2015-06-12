@@ -8,6 +8,10 @@ Board.NewQuestionController = Ember.Controller.extend({
       });
       newQuestion.save();
       this.transitionToRoute('questions');
+      this.set('question', " ");
+      this.set('author', " ");
+      this.set('description', " ");
+
     }
   }
 });

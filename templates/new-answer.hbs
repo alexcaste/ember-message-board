@@ -1,10 +1,10 @@
-<h2>Your Answer</h2>
-
 <form>
-  <div class="form-group">
-    <label for="text">Your thoughts:</label>
-    {{textarea value=text id="text" class="form-control" rows="5"}}
-  </div>
 
-  <button class="btn btn-primary" {{action "save"}}>Add your answer</button>
+  <label for="text">Your Answer:</label>
+  {{textarea id="text" class="form-control" value=text}}
+
+  <label for="poster">Your Name:</label>
+  {{textarea id="poster" class="form-control" value=poster}}
+
+  <button class="btn btn-info" {{action 'addAnswer'}}>Submit</button>
 </form>

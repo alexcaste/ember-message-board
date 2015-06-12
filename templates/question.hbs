@@ -1,46 +1,48 @@
-<h1>{{question}}</h1>
+<div class="row well clearfix">
+  <div class="col-md-12 column">
+    <h1>{{question}}</h1>
+    {{#if isEditing}}
+      <form>
+        <div class="form-group">
+          <label for="question">Question</label>
+          {{input value=question id="question" class="form-control"}}
+        </div>
 
-{{#if isEditing}}
-  <form>
-    <div class="form-group">
-      <label for="question">Question</label>
-      {{input value=question id="question" class="form-control"}}
-    </div>
+        <div class="form-group">
+          <label for="author">Author</label>
+          {{input value=author id="author" class="form-control"}}
+        </div>
 
-    <div class="form-group">
-      <label for="author">Author</label>
-      {{input value=author id="author" class="form-control"}}
-    </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          {{textarea value=description id="description" class="form-control" rows="10"}}
+        </div>
+        <button class="btn btn-primary" {{action 'saveQuestion'}}>Save</button>
+      </form>
+    {{else}}
+      <h4>asked by: {{author}}</h4>
+      <p>{{description}}</p>
+      <button class="btn btn-warning" {{action 'editQuestion'}}>Edit Question</button>
+      <button class="btn btn-danger"  {{action 'deleteQuestion'}}>Delete Question</button>
+    {{/if}}
 
-    <div class="form-group">
-      <label for="description">Description</label>
-      {{textarea value=description id="description" class="form-control" rows="10"}}
-    </div>
-
-    <button class="btn btn-primary" {{action 'save'}}>Save</button>
-  </form>
-{{else}}
-  <h4>asked by: {{author}}</h4>
-
-  <p>{{description}}</p>
-
-  <button class="btn btn-warning" {{action 'edit'}}>Edit</button>
-  <button class="btn btn-danger"  {{action 'delete'}}>Delete</button>
-{{/if}}
-
-
-<h2>Answers</h2>
-
-{{#each answer in answers itemController="answer"}}
-  <p>
-    {{answer.poster}} says:
-  </p>
-  <p>
-    {{answer.text}}
-    <button class="btn btn-xs btn-danger" {{action 'delete'}}>delete</button>
-  </p>
-{{/each}}
-
-<p>{{#link-to 'new-answer' this class="btn btn-success"}}What's Your Answer?{{/link-to}}</p>
-
-{{outlet}}
+    <h2>Answers</h2>
+    {{#each answer in answers}}
+    <ul>
+      <li>
+        <p>
+          <button class="btn btn-xs btn-danger" {{action 'deleteAnswer' answer}} ><span class="glyphicon glyphicon-remove"></span> </button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{answer.poster}} says:</strong>
+        </p>
+        <p>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{answer.text}}
+        </p>
+      </li>
+    </ul>
+    {{/each}}
+    <p>
+      {{#link-to 'new-answer' this.id class="btn btn-info"}}What's Your Answer?{{/link-to}}
+    </p>
+    {{outlet}}
+  </div>
+</div>
