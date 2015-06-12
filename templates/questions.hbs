@@ -1,12 +1,12 @@
-<h1>PeaceLoveUnityRespect Message Board</h1>
 <br>
 <div class="row well clearfix">
   <div class="col-md-12 column">
       {{#each}}
         <p class="lead">{{#link-to 'question' this.id}}{{question}}{{/link-to}}</p>
-        <p>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;asked by: {{author}}
+        <p class="col-md-offset-1">
+          <strong>asked by: &nbsp;</strong>{{author}}
         </p>
+        <br>
       {{/each}}
   </div>
 </div>

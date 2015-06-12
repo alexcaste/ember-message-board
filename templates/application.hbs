@@ -1,17 +1,21 @@
 <div class='container'>
-  <nav class='navbar navbar-default' role='navigation'>
+  <nav class='navbar navbar-default ' role='navigation'>
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">PeaceLoveUnityRespect Message Board</a>
+
       </div>
       <div>
+        <a class="navbar-brand pull-right" style="padding-right:5px;" href="#">PeaceLoveUnityRespect Message Board</a>
         <ul class="nav navbar-nav">
-          <li>{{#link-to 'new-question'}}Ask Question{{/link-to}}</li>
-          <li>{{#link-to 'questions'}}All Questions{{/link-to}}</li>
+          <li>{{#link-to 'new-question' class="btn btn-danger navbar-btn"}}<strong>Ask Question</strong>{{/link-to}}</li>
+          <li>{{#link-to 'questions' class="btn navbar-btn"}}All Questions{{/link-to}}</li>
+
         </ul>
       </div>
     </div>
   </nav>
+
+
 
   {{outlet}}
 </div>
